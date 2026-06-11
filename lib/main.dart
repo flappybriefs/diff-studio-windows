@@ -8,7 +8,7 @@ import 'dart:ui' as ui;
 import 'package:archive/archive.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:excel/excel.dart' as xlsx;
-import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart' as file_picker;
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:syncfusion_flutter_pdf/pdf.dart';
@@ -190,7 +190,7 @@ class _DiffStudioHomeState extends State<DiffStudioHome> {
   }
 
   Future<void> pickFile(CompareSide side) async {
-    final result = await FilePicker.platform.pickFiles(withData: false);
+    final result = await file_picker.FilePicker.platform.pickFiles(withData: false);
     final path = result?.files.single.path;
     if (path == null) return;
     await loadPath(path, side);
