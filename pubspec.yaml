@@ -1,0 +1,26 @@
+name: diff_studio_flutter
+description: Native-feeling Windows file comparison tool rebuilt with Flutter.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  archive: any
+  desktop_drop: any
+  excel: any
+  file_picker: any
+  path: any
+  syncfusion_flutter_pdf: any
+  xml: any
+
+dev_dependencies:
+  flutter_lints: any
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
