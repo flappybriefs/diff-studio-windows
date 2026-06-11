@@ -148,7 +148,7 @@ class DiffStudioApp extends StatelessWidget {
       segmentedButtonTheme: SegmentedButtonThemeData(
         style: ButtonStyle(
           visualDensity: VisualDensity.compact,
-          shape: MaterialStatePropertyAll(
+          shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
         ),
@@ -190,7 +190,7 @@ class _DiffStudioHomeState extends State<DiffStudioHome> {
   }
 
   Future<void> pickFile(CompareSide side) async {
-    final result = await file_picker.FilePicker.platform.pickFiles(withData: false);
+    final result = await file_picker.FilePicker().pickFiles(withData: false);
     final path = result?.files.single.path;
     if (path == null) return;
     await loadPath(path, side);
@@ -362,7 +362,7 @@ class _DiffStudioHomeState extends State<DiffStudioHome> {
     return count;
   }
 
-  Widget _ComparisonSurface() {
+  Widget _comparisonSurface() {
     if (tableMode) {
       return TableComparisonView(
         leftFile: leftFile,
@@ -546,7 +546,7 @@ class _FileTarget extends StatelessWidget {
               height: 38,
               padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
-                color: active ? glass.focus.withOpacity(0.14) : glass.panel,
+                color: active ? glass.focus.withValues(alpha: 0.14) : glass.panel,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: active ? glass.focus : glass.stroke, width: active ? 1.5 : 1),
               ),
@@ -1714,9 +1714,9 @@ Color _rowColor(BuildContext context, DiffKind kind) {
     case DiffKind.removed:
       return (dark ? Colors.red : Colors.redAccent).withOpacity(dark ? 0.18 : 0.22);
     case DiffKind.modified:
-      return Colors.amber.withOpacity(dark ? 0.18 : 0.24);
+      return Colors.amber.withValues(dark ? 0.18 : 0.24);
     case DiffKind.moved:
-      return Colors.blueAccent.withOpacity(dark ? 0.16 : 0.20);
+      return Colors.blueAccent.withValues(dark ? 0.16 : 0.20);
     case DiffKind.same:
       return Colors.transparent;
   }
