@@ -190,7 +190,7 @@ class _DiffStudioHomeState extends State<DiffStudioHome> {
   }
 
   Future<void> pickFile(CompareSide side) async {
-    final result = await file_picker.FilePicker().pickFiles(withData: false);
+    final result = await file_picker.FilePicker.platform.pickFiles(withData: false);
     final path = result?.files.single.path;
     if (path == null) return;
     await loadPath(path, side);
@@ -324,7 +324,7 @@ class _DiffStudioHomeState extends State<DiffStudioHome> {
                           onSelect: selectDiff,
                         ),
                         Container(width: 1, color: glass.stroke),
-                        Expanded(child: _ComparisonSurface()),
+                        Expanded(child: _comparisonSurface()),
                       ],
                     )
                   : _WelcomeSurface(
