@@ -12,7 +12,7 @@ dependencies:
   archive: any
   desktop_drop: any
   excel: any
-  file_picker: any
+  file_selector: any
   path: any
   syncfusion_flutter_pdf: any
   xml: any
